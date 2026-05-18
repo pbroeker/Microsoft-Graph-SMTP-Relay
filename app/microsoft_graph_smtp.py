@@ -64,7 +64,7 @@ class MicrosoftGraphSmtp(Controller):
         self.load_middleware()
 
     def factory(self):
-        return MicrosoftGraphSmtpSMTP(self.handler, auth_mechanism_allow=["LOGIN", "PLAIN", "CRAM-MD5"], **self.SMTP_kwargs)
+        return MicrosoftGraphSmtpSMTP(self.handler, auth_exclude_mechanism=["CRAM-MD5"], **self.SMTP_kwargs)
     def load_middleware(self):
         pkg_dir = Path(self.middleware_dir) # instead of glob
         pkg_name = ".".join(pkg_dir.parts)
