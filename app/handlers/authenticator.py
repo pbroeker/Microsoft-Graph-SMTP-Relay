@@ -44,7 +44,7 @@ class Authenticator():
                 logging.info(f"Authentication successful for user: {username}")
                 event_bus_instance.publishSync('after_auth', auth_data)
                 
-                return AuthResult(success=True)
+                return AuthResult(success=True, auth_data=auth_data)
             else:
                 logging.warning(f"Authentication failed for user: {username}")
                 return AuthResult(success=False, handled=False, message="535 Invalid credentials")
